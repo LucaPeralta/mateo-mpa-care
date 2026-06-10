@@ -1,23 +1,89 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Barlow:wght@300;400;600&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: "Oswald", sans-serif;
-background-color: #1e1e1e; /* gris oscuro profesional */
-color: #f5f5f5; /* texto claro */
+}
 
+html {
   scroll-behavior: smooth;
 }
 
+body {
+  font-family: 'Barlow', sans-serif;
+  background-color: #0a0a0a;
+  color: #f0f0f0;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
 h1, h2, h3 {
-  color: #e10600; /* títulos en rojo */
+  font-family: 'Oswald', sans-serif;
 }
 
-button {
-  background-color: #e10600;
-  color: white;
+/* ── Shared utilities ── */
+.section-label {
+  font-size: 0.72rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #e10600;
+  font-family: 'Barlow', sans-serif;
+  font-weight: 600;
 }
 
-section, footer {
-  background-color: transparent; /* todo usa el mismo fondo global */
-  border-top: 1px solid rgba(225, 6, 0, 0.1);
+.section-title {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.1;
+}
+
+.section-desc {
+  color: #666;
+  font-size: 1rem;
+  line-height: 1.8;
+  max-width: 560px;
+}
+
+.text-red { color: #e10600; }
+
+/* ── Global button ── */
+.btn {
+  display: inline-block;
+  padding: 14px 36px;
+  border-radius: 4px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  border: 2px solid transparent;
+}
+
+.btn--primary {
+  background: #e10600;
+  color: #fff;
+}
+
+.btn--primary:hover {
+  background: transparent;
+  border-color: #e10600;
+  color: #e10600;
+  box-shadow: 0 0 24px rgba(225, 6, 0, 0.25);
+}
+
+.btn--outline {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.18);
+  color: #ccc;
+}
+
+.btn--outline:hover {
+  border-color: #fff;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.05);
 }

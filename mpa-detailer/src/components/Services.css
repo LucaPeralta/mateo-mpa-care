@@ -1,56 +1,138 @@
 .services {
-background-color: transparent;
-color: #111;
+  padding: 130px 48px;
+  position: relative;
+  background: #0a0a0a;
+}
 
+.services-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.services-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-  padding: 100px 20px;
-  border-top: 1px solid rgba(225, 6, 0, 0.3);
+  gap: 16px;
+  margin-bottom: 72px;
 }
 
-.services-title {
-  font-size: 2.5rem;
-  color: #e10600;
-  margin-bottom: 20px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
-
-.services-text {
-  max-width: 700px;
-  margin: 0 auto 50px;
-  color: #d0d0d0;
-  font-size: 1.1rem;
-  line-height: 1.8;
-}
-
+/* ── 3D Flip cards grid ── */
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 22px;
 }
 
-.service-card {
-  background-color: #2b2b2b;
-  border-radius: 15px;
-  padding: 30px 20px;
-  border: 1px solid #555;
-  transition: 0.3s ease-in-out;
+.svc {
+  height: 250px;
+  perspective: 1100px;
+  cursor: pointer;
 }
 
-.service-card:hover {
-  transform: translateY(-5px);
-  border-color: #e10600;
-  box-shadow: 0 0 15px rgba(225, 6, 0, 0.4);
+.svc__inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.65s cubic-bezier(0.4, 0.2, 0.2, 1);
 }
 
-.service-card h3 {
-  color: #e10600;
-  font-size: 1.4rem;
-  margin-bottom: 10px;
+.svc:hover .svc__inner {
+  transform: rotateY(180deg);
 }
 
-.service-card p {
-  color: #ccc;
-  font-size: 1rem;
-  line-height: 1.6;
+.svc__front,
+.svc__back {
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  padding: 30px 26px;
+  border: 1px solid rgba(255, 255, 255, 0.055);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Front */
+.svc__front {
+  background: #111;
+  justify-content: flex-end;
+  gap: 8px;
+  transition: border-color 0.3s;
+}
+
+.svc:hover .svc__front {
+  border-color: rgba(225, 6, 0, 0.2);
+}
+
+/* Back */
+.svc__back {
+  background: #160000;
+  border-color: rgba(225, 6, 0, 0.22);
+  transform: rotateY(180deg);
+  justify-content: center;
+  gap: 14px;
+}
+
+/* Number watermark */
+.svc__num {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 3.8rem;
+  font-weight: 700;
+  color: rgba(225, 6, 0, 0.07);
+  line-height: 1;
+  user-select: none;
+  transition: color 0.3s;
+}
+
+.svc:hover .svc__num {
+  color: rgba(225, 6, 0, 0.14);
+}
+
+.svc__title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0.5px;
+}
+
+.svc__desc {
+  color: #5a5a5a;
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.svc__cue {
+  font-size: 0.68rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(225, 6, 0, 0.55);
+  margin-top: 2px;
+}
+
+.svc__detail {
+  color: #aaa;
+  font-size: 0.92rem;
+  line-height: 1.65;
+}
+
+.svc__btn {
+  padding: 10px 22px;
+  font-size: 0.8rem;
+  align-self: flex-start;
+  border-radius: 4px;
+  border-width: 1.5px;
+}
+
+@media (max-width: 600px) {
+  .services { padding: 100px 20px; }
+  .svc { height: 230px; }
 }

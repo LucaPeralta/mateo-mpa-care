@@ -1,31 +1,52 @@
 import "./About.css";
 
+const features = [
+  {
+    num: "01",
+    title: "Polishing",
+    desc: "Eliminamos rayaduras, marcas de remolino y oxidación para restaurar el brillo original de la pintura.",
+  },
+  {
+    num: "02",
+    title: "Interior Care",
+    desc: "Limpieza profunda y desinfección de tapizados, alfombras, tablero y plásticos — como nuevo.",
+  },
+  {
+    num: "03",
+    title: "Ceramic Coating",
+    desc: "Protección nano-cerámica de larga duración con acabado espejo que repele agua, barro y UV.",
+  },
+  {
+    num: "04",
+    title: "Hand Wash",
+    desc: "Lavado a mano con método two-bucket y arcilla descontaminante que preserva tu clear coat.",
+  },
+];
+
 export default function About() {
   return (
-    <section className="about">
-      <h2 className="about-title">About Us</h2>
-      <p className="about-text">
-        At <strong>MPA Detailer</strong>, we specialize in professional car detailing and restoration. 
-        Our mission is to bring back the factory shine of your vehicle using premium products 
-        and advanced techniques. Every car we work on is treated with precision, passion, and care.
-      </p>
+    <section className="about" id="about">
+      <div className="about-inner">
+        <div className="about-header">
+          <span className="section-label">Quiénes Somos</span>
+          <h2 className="section-title">
+            Sobre <span className="text-red">MPA Detailer</span>
+          </h2>
+          <p className="section-desc">
+            Nos especializamos en detailing profesional y restauración de vehículos. Cada auto que trabajamos
+            recibe precisión, pasión y el cuidado que merece — con productos premium y técnicas avanzadas.
+          </p>
+        </div>
 
-      <div className="about-grid">
-        <div className="about-item">
-          <h3>Polishing</h3>
-          <p>Restore gloss and remove imperfections from the paint.</p>
-        </div>
-        <div className="about-item">
-          <h3>Interior Care</h3>
-          <p>Deep cleaning and detailing for a fresh, like-new interior.</p>
-        </div>
-        <div className="about-item">
-          <h3>Ceramic Coating</h3>
-          <p>Long-lasting protection and a mirror finish for your vehicle.</p>
-        </div>
-        <div className="about-item">
-          <h3>Hand Wash</h3>
-          <p>Gentle and precise exterior wash that preserves your car’s shine.</p>
+        <div className="about-grid">
+          {features.map((f) => (
+            <div key={f.num} className="about-card">
+              <span className="about-card__num">{f.num}</span>
+              <h3 className="about-card__title">{f.title}</h3>
+              <p className="about-card__desc">{f.desc}</p>
+              <div className="about-card__bar" />
+            </div>
+          ))}
         </div>
       </div>
     </section>
