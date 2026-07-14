@@ -1,119 +1,65 @@
-.about {
-  padding: 130px 48px;
-  position: relative;
-}
+.about-header { max-width: 640px; }
 
-/* top divider line */
-.about::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 50%; transform: translateX(-50%);
-  width: 1px; height: 80px;
-  background: linear-gradient(to bottom, transparent, rgba(225, 6, 0, 0.5), transparent);
-}
-
-.about-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.about-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 16px;
-  margin-bottom: 72px;
-}
-
-/* ── Cards ── */
 .about-grid {
+  margin-top: 56px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 22px;
-  perspective: 1200px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
 }
 
 .about-card {
-  background: #111;
-  border: 1px solid rgba(255, 255, 255, 0.055);
-  border-radius: 14px;
-  padding: 36px 28px 30px;
   position: relative;
+  padding: 32px 26px 40px;
   overflow: hidden;
-  transition:
-    transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-    border-color 0.3s,
-    box-shadow 0.3s;
-  transform-style: preserve-3d;
-  cursor: default;
-}
-
-/* subtle red gradient on hover */
-.about-card::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(225, 6, 0, 0.07) 0%, transparent 55%);
-  opacity: 0;
-  transition: opacity 0.3s;
-  border-radius: inherit;
-  pointer-events: none;
+  transition: transform 0.35s var(--ease), border-color 0.35s var(--ease),
+              box-shadow 0.35s var(--ease);
 }
 
 .about-card:hover {
-  transform: translateY(-10px) rotateX(5deg) rotateY(-2deg);
-  border-color: rgba(225, 6, 0, 0.3);
-  box-shadow:
-    0 24px 48px rgba(0, 0, 0, 0.5),
-    0 0 0 1px rgba(225, 6, 0, 0.08);
+  transform: translateY(-6px);
+  border-color: var(--border-hot);
+  box-shadow: var(--shadow-card);
 }
 
-.about-card:hover::after { opacity: 1; }
-
 .about-card__num {
-  position: absolute;
-  top: 18px; right: 22px;
-  font-family: 'Oswald', sans-serif;
-  font-size: 3.5rem;
+  font-family: var(--font-display);
+  font-size: 2.6rem;
   font-weight: 700;
-  color: rgba(225, 6, 0, 0.08);
-  line-height: 1;
-  transition: color 0.3s;
-  user-select: none;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.18);
+  transition: -webkit-text-stroke 0.35s ease;
 }
 
 .about-card:hover .about-card__num {
-  color: rgba(225, 6, 0, 0.15);
+  -webkit-text-stroke: 1px var(--accent);
 }
 
 .about-card__title {
-  font-family: 'Oswald', sans-serif;
-  font-size: 1.4rem;
+  margin-top: 16px;
+  font-size: 1.2rem;
   font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   color: #fff;
-  margin-bottom: 12px;
-  position: relative;
 }
 
 .about-card__desc {
-  color: #666;
+  margin-top: 12px;
   font-size: 0.95rem;
   line-height: 1.7;
-  position: relative;
+  color: var(--text-dim);
 }
 
 .about-card__bar {
-  margin-top: 24px;
-  height: 2px;
-  width: 36px;
-  background: #e10600;
-  border-radius: 2px;
-  transition: width 0.35s ease;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 100%;
+  background: linear-gradient(90deg, var(--accent), transparent 80%);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.45s var(--ease);
 }
 
-.about-card:hover .about-card__bar { width: 72px; }
-
-@media (max-width: 600px) {
-  .about { padding: 100px 24px; }
-}
+.about-card:hover .about-card__bar { transform: scaleX(1); }

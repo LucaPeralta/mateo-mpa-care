@@ -1,0 +1,41 @@
+.process-grid {
+  margin-top: 64px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 36px 28px;
+  list-style: none;
+  counter-reset: step;
+}
+
+.pstep { position: relative; }
+
+.pstep__num {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--accent);
+}
+
+.pstep__line {
+  margin-top: 18px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--accent), var(--border) 70%);
+}
+
+.pstep__title {
+  margin-top: 18px;
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.pstep__desc {
+  margin-top: 10px;
+  font-size: 0.94rem;
+  line-height: 1.7;
+  color: var(--text-dim);
+}

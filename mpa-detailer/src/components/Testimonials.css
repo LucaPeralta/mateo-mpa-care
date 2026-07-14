@@ -1,0 +1,71 @@
+.testimonials-grid {
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.trev {
+  margin: 0;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.35s var(--ease), border-color 0.35s var(--ease);
+}
+
+.trev:hover {
+  transform: translateY(-5px);
+  border-color: var(--border-hot);
+}
+
+.trev__stars {
+  display: inline-flex;
+  gap: 4px;
+  color: #ffb400;
+}
+
+.trev__stars svg { width: 16px; height: 16px; }
+
+.trev__text {
+  margin-top: 18px;
+  font-size: 0.98rem;
+  line-height: 1.75;
+  color: var(--text-dim);
+  flex: 1;
+}
+
+.trev__author {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.trev__avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: #fff;
+  background: linear-gradient(135deg, #ff2216, var(--accent) 55%, #a30400);
+}
+
+.trev__author strong {
+  display: block;
+  font-size: 0.95rem;
+  color: #fff;
+}
+
+.trev__author em {
+  display: block;
+  font-style: normal;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-mute);
+}

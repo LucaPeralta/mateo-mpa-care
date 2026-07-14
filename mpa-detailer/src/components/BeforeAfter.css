@@ -1,0 +1,129 @@
+.ba {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius);
+  overflow: hidden;
+  cursor: ew-resize;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: pan-y;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.ba-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.ba-clip {
+  position: absolute;
+  inset: 0 auto 0 0;
+  overflow: hidden;
+  z-index: 2;
+}
+
+/* La imagen "antes" se ancla al frame completo para que no se deforme */
+.ba-clip .ba-img {
+  width: auto;
+  min-width: 100%;
+  height: 100%;
+}
+
+.ba-divider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #fff;
+  z-index: 4;
+  transform: translateX(-1px);
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.6);
+}
+
+.ba-handle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+}
+
+.ba-handle svg { width: 20px; height: 20px; }
+
+.ba-badge {
+  position: absolute;
+  top: 14px;
+  z-index: 3;
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  padding: 7px 14px;
+  border-radius: 999px;
+  backdrop-filter: blur(8px);
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+
+.ba-badge--before {
+  left: 14px;
+  background: rgba(0, 0, 0, 0.55);
+  color: #ddd;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.ba-badge--after {
+  right: 14px;
+  background: var(--accent);
+  color: #fff;
+}
+
+/* range invisible que cubre todo (accesibilidad teclado) */
+.ba-range {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: ew-resize;
+  z-index: 5;
+  margin: 0;
+}
+
+.ba:has(.ba-range:focus-visible) {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* ── Placeholder cuando faltan fotos ── */
+.ba--placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: default;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(225, 6, 0, 0.08), transparent 60%),
+    linear-gradient(160deg, var(--surface-2), var(--surface));
+  color: var(--text-mute);
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.ba-placeholder__icon { font-size: 2rem; opacity: 0.5; }

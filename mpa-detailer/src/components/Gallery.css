@@ -1,180 +1,35 @@
-.gallery {
-  padding: 130px 48px;
-  position: relative;
-  background: #0d0d0d;
+.gallery-grid {
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 28px;
 }
 
-/* subtle grid texture */
-.gallery::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(225, 6, 0, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(225, 6, 0, 0.03) 1px, transparent 1px);
-  background-size: 44px 44px;
-  pointer-events: none;
-}
+.gcard { margin: 0; }
 
-.gallery-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  position: relative;
-}
-
-.gallery-header {
+.gcard__caption {
+  padding: 16px 6px 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 16px;
-  margin-bottom: 72px;
-}
-
-.gallery-header code {
-  font-size: 0.82rem;
-  background: #1a1a1a;
-  padding: 2px 8px;
-  border-radius: 4px;
-  color: #e10600;
-  border: 1px solid rgba(225, 6, 0, 0.18);
-  font-family: monospace;
-}
-
-/* ── Grid ── */
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  gap: 24px;
-}
-
-/* ── 3D Flip Card ── */
-.gcard {
-  height: 280px;
-  perspective: 1100px;
-  cursor: pointer;
-}
-
-.gcard__inner {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  transform-style: preserve-3d;
-  transition: transform 0.75s cubic-bezier(0.4, 0.2, 0.2, 1);
-}
-
-.gcard:hover .gcard__inner {
-  transform: rotateY(180deg);
-}
-
-/* ── Faces ── */
-.gcard__face {
-  position: absolute;
-  inset: 0;
-  border-radius: 14px;
-  overflow: hidden;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  background: #141414;
-}
-
-.gcard__face img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.5s ease;
-}
-
-.gcard:hover .gcard__face img {
-  transform: scale(1.05);
-}
-
-/* Back face is rotated */
-.gcard__face--back {
-  transform: rotateY(180deg);
-}
-
-/* ── Overlays ── */
-.gcard__overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, transparent 55%);
-  pointer-events: none;
-}
-
-.gcard__overlay--back {
-  background: linear-gradient(to top, rgba(140, 0, 0, 0.55) 0%, transparent 60%);
-}
-
-/* ── Badge ANTES / DESPUÉS ── */
-.gcard__badge {
-  position: absolute;
-  top: 14px;
-  left: 14px;
-  font-family: 'Oswald', sans-serif;
-  font-size: 0.68rem;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  padding: 5px 13px;
-  border-radius: 3px;
-  font-weight: 600;
-  backdrop-filter: blur(6px);
-}
-
-.gcard__badge--before {
-  background: rgba(20, 20, 20, 0.8);
-  color: #999;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.gcard__badge--after {
-  background: rgba(225, 6, 0, 0.88);
-  color: #fff;
-  border: 1px solid rgba(255, 100, 80, 0.4);
-}
-
-/* ── Car info (bottom) ── */
-.gcard__info {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  padding: 36px 18px 16px;
+  gap: 2px;
 }
 
 .gcard__service {
-  font-size: 0.7rem;
+  font-size: 0.72rem;
+  font-weight: 600;
   letter-spacing: 2.5px;
   text-transform: uppercase;
-  color: #e10600;
-  margin-bottom: 4px;
-  font-family: 'Barlow', sans-serif;
-  font-weight: 600;
+  color: var(--accent);
 }
 
 .gcard__name {
-  font-family: 'Oswald', sans-serif;
   font-size: 1.15rem;
-  color: #fff;
-  letter-spacing: 0.5px;
-}
-
-/* ── Hint label ── */
-.gcard__hint {
-  position: absolute;
-  bottom: 14px;
-  right: 14px;
-  font-size: 0.68rem;
-  letter-spacing: 1.5px;
-  color: rgba(255, 255, 255, 0.35);
-  font-family: 'Barlow', sans-serif;
+  font-weight: 600;
+  letter-spacing: 1px;
   text-transform: uppercase;
-  transition: opacity 0.2s;
+  color: #fff;
 }
 
-.gcard:hover .gcard__hint { opacity: 0; }
-
-@media (max-width: 600px) {
-  .gallery { padding: 100px 20px; }
+@media (max-width: 400px) {
   .gallery-grid { grid-template-columns: 1fr; }
-  .gcard { height: 260px; }
 }
